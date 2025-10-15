@@ -1,44 +1,65 @@
 import React, { useEffect, useState } from 'react';
+import {NavLink } from 'react-router';
 
 const Navber = () => {
-  
-  const [theme, setTheme] = useState('Light')
+  const [theme, setTheme] = useState('Light');
 
-  useEffect(() => { 
-    localStorage.setItem('theme', theme)
-    const localStorageThime = localStorage.getItem('theme')
-    document.querySelector('html').setAttribute("data-theme",localStorageThime)
-  }, [theme])
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
+    const localStorageThime = localStorage.getItem('theme');
+    document
+      .querySelector('html')
+      .setAttribute('data-theme', localStorageThime);
+  }, [theme]);
 
-  const handaleTheme = (e) => {
+  const handaleTheme = e => {
     if (e.target.checked) {
       setTheme('dark');
     } else {
       setTheme('light');
     }
-  }
+  };
 
+  const link = (
+    <>
+      <NavLink
+        to={'/'}
+        className={({ isActive }) =>
+          isActive ? 'text-primary font-bold' : 'font-bold'
+        }
+      >
+        Home
+      </NavLink>
+      <NavLink
+        to={'/blogs'}
+        className={({ isActive }) =>
+          isActive ? 'text-primary font-bold' : 'font-bold'
+        }
+      >
+        Bloge
+      </NavLink>
+      <NavLink
+        to={'/bookMark'}
+        className={({ isActive }) =>
+          isActive ? 'text-primary font-bold' : 'font-bold'
+        }
+      >
+        Bookmarke
+      </NavLink>
+    </>
+  );
 
-  console.log(theme);
   return (
     <div>
-      <div className="navbar bg-base-100 shadow-lg px-4 fixed z-10">
+      <div className="navbar bg-base-100 shadow-lg px-4 sm:px-8 fixed z-10">
         <div className="flex-1">
           <a className="btn btn-ghost text-2xl gap-0 text-secondary normal-case">
             Byte<span className="text-primary">Blaze</span>
           </a>
         </div>
         <div className="flex-none">
-          <ul className="menu menu-horizontal px-1 font-bold">
-            <li>
-              <a href="">Home</a>
-            </li>
-            <li>
-              <a className='text-primary' href="">Bloge</a>
-            </li>
-            <li>
-              <a href="">Bookmarke</a>
-            </li>
+          <ul className="menu menu-horizontal px-1 font-bold space-x-6 mr-5">
+            {link}
           </ul>
           <label className="toggle text-base-content">
             <input

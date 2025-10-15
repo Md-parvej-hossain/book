@@ -1,15 +1,14 @@
-import React from 'react';
-import Navber from '../components/Navber';
 
+import Hero from '../components/Hero';
+import wave from "../assets/wave.svg";
 const Home = () => {
   return (
     <div>
-      {/* Navber */}
-
-      <div className="h-16">
-        <Navber />
+      <div className="flex relative flex-col items-center justify-center min-h-[calc(100vh-116px)]">
+        <Hero />
+        <img className="absolute bottom-0 w-full" src={wave} alt="" />
       </div>
-      <h1>This is a Home Pages</h1>
+      
     </div>
   );
 };
