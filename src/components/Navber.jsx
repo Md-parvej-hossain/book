@@ -36,7 +36,7 @@ const Navber = () => {
           isActive ? 'text-primary font-bold' : 'font-bold'
         }
       >
-        Bloge
+        Blogs
       </NavLink>
       <NavLink
         to={'/bookMark'}
