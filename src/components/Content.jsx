@@ -4,7 +4,7 @@ import Markdown from 'react-markdown'
 import rehypeRaw from "rehype-raw";
 const Content = () => {
   const bloContent = useLoaderData()
- const { cover_image, title, body_html, tags } = bloContent;
+ const { cover_image, title, body_html, tags ,url} = bloContent;
   return (
     <div>
       <div
@@ -17,9 +17,9 @@ const Content = () => {
           src={cover_image || placeHolderImg}
         />
         <div className="p-6 space-y-2">
-          <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline dark:text-primary">
+          <a href={url} target="_blank" className="text-2xl font-semibold group-hover:underline group-focus:underline dark:text-primary">
             {title}
-          </h3>
+          </a>
          
           <div className="flex flex-wrap py-6 gap-2 border-t border-dashed dark:border-gray-600">
             {tags.map((tag,indx) => (
